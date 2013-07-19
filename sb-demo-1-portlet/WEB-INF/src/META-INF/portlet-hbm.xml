@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="com.liferay.live.sb.demo.model.Course" />
+	<import class="com.liferay.live.sb.demo.model.CourseCatalog" />
+	<import class="com.liferay.live.sb.demo.model.CourseStudent" />
+	<import class="com.liferay.live.sb.demo.model.Instructor" />
+	<import class="com.liferay.live.sb.demo.model.Student" />
+	<import class="com.liferay.live.sb.demo.model.StudentGPA" />
+	<class name="com.liferay.live.sb.demo.model.impl.CourseImpl" table="SBDemo_Course">
+		<cache usage="read-write" />
+		<id name="courseId" type="long">
+			<generator class="increment" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="instructorId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="courseCatalogId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="creditHours" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="semester" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="year" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="major" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.liferay.live.sb.demo.model.impl.CourseCatalogImpl" table="COURSE_CATALOG">
+		<cache usage="read-write" />
+		<id name="courseCatalogId" column="CC_ID" type="long">
+			<generator class="increment" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" column="U_ID" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" column="CREATED" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" column="MODIFIED" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" column="C_NAME" />
+		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" column="C_DESC" />
+		<property name="major" type="com.liferay.portal.dao.orm.hibernate.StringType" column="C_MAJOR" />
+		<property name="creditHours" type="com.liferay.portal.dao.orm.hibernate.IntegerType" column="CRED_HRS" />
+	</class>
+	<class name="com.liferay.live.sb.demo.model.impl.CourseStudentImpl" table="SBDemo_CourseStudent">
+		<cache usage="read-write" />
+		<composite-id name="primaryKey" class="com.liferay.live.sb.demo.service.persistence.CourseStudentPK">
+			<key-property name="studentId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+			<key-property name="courseId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		</composite-id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="grade" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+	</class>
+	<class name="com.liferay.live.sb.demo.model.impl.InstructorImpl" table="SBDemo_Instructor">
+		<cache usage="read-write" />
+		<id name="instructorId" type="long">
+			<generator class="increment" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="started" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="com.liferay.live.sb.demo.model.impl.StudentImpl" table="SBDemo_Student">
+		<cache usage="read-write" />
+		<id name="studentId" type="long">
+			<generator class="increment" />
+		</id>
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="enrolled" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="enrollmentDate" type="org.hibernate.type.TimestampType" />
+		<property name="yearInSchool" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="major" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="com.liferay.live.sb.demo.model.impl.StudentGPAImpl" table="SBDemo_StudentGPA">
+		<cache usage="read-write" />
+		<id name="studentId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="gradePoints" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="year" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="semester" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="creditHours" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="gpa" type="com.liferay.portal.dao.orm.hibernate.DoubleType" />
+		<property name="letterGrade" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

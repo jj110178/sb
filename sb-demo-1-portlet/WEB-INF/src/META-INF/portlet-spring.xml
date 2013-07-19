@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="com.liferay.live.sb.demo.service.CourseLocalService" class="com.liferay.live.sb.demo.service.impl.CourseLocalServiceImpl" />
+	<bean id="com.liferay.live.sb.demo.service.persistence.CoursePersistence" class="com.liferay.live.sb.demo.service.persistence.CoursePersistenceImpl" parent="basePersistence" />
+	<bean id="com.liferay.live.sb.demo.service.CourseCatalogLocalService" class="com.liferay.live.sb.demo.service.impl.CourseCatalogLocalServiceImpl" />
+	<bean id="com.liferay.live.sb.demo.service.persistence.CourseCatalogPersistence" class="com.liferay.live.sb.demo.service.persistence.CourseCatalogPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="demo2DataSource" />
+		<property name="sessionFactory" ref="demo2SessionFactory" />
+	</bean>
+	<bean id="com.liferay.live.sb.demo.service.CourseStudentLocalService" class="com.liferay.live.sb.demo.service.impl.CourseStudentLocalServiceImpl" />
+	<bean id="com.liferay.live.sb.demo.service.persistence.CourseStudentPersistence" class="com.liferay.live.sb.demo.service.persistence.CourseStudentPersistenceImpl" parent="basePersistence" />
+	<bean id="com.liferay.live.sb.demo.service.InstructorLocalService" class="com.liferay.live.sb.demo.service.impl.InstructorLocalServiceImpl" />
+	<bean id="com.liferay.live.sb.demo.service.persistence.InstructorPersistence" class="com.liferay.live.sb.demo.service.persistence.InstructorPersistenceImpl" parent="basePersistence" />
+	<bean id="com.liferay.live.sb.demo.service.StudentLocalService" class="com.liferay.live.sb.demo.service.impl.StudentLocalServiceImpl" />
+	<bean id="com.liferay.live.sb.demo.service.persistence.StudentPersistence" class="com.liferay.live.sb.demo.service.persistence.StudentPersistenceImpl" parent="basePersistence" />
+	<bean id="com.liferay.live.sb.demo.service.StudentGPALocalService" class="com.liferay.live.sb.demo.service.impl.StudentGPALocalServiceImpl" />
+	<bean id="com.liferay.live.sb.demo.service.persistence.StudentGPAPersistence" class="com.liferay.live.sb.demo.service.persistence.StudentGPAPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="noDataSource" />
+	</bean>
+</beans>

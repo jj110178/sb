@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="com.liferay.live.sb.demo.model.impl.CourseModelImpl">
+		<attributes>
+			<id name="courseId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="instructorId" />
+			<basic name="courseCatalogId" />
+			<basic name="creditHours" />
+			<basic name="semester" />
+			<basic name="year" />
+			<basic name="name" />
+			<basic name="major" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.liferay.live.sb.demo.model.impl.CourseCatalogModelImpl">
+		<attributes>
+			<id name="courseCatalogId">
+				<column name="CC_ID" />
+			</id>
+			<basic name="userId">
+				<column name="U_ID" />
+			</basic>
+			<basic name="createDate">
+				<column name="CREATED" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<column name="MODIFIED" />
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="name">
+				<column name="C_NAME" />
+			</basic>
+			<basic name="description">
+				<column name="C_DESC" />
+			</basic>
+			<basic name="major">
+				<column name="C_MAJOR" />
+			</basic>
+			<basic name="creditHours">
+				<column name="CRED_HRS" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.liferay.live.sb.demo.model.impl.CourseStudentModelImpl">
+		<id-class class="com.liferay.live.sb.demo.service.persistence.CourseStudentPK" />
+		<attributes>
+			<id name="studentId" />
+			<id name="courseId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="grade" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.liferay.live.sb.demo.model.impl.InstructorModelImpl">
+		<attributes>
+			<id name="instructorId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="name" />
+			<basic name="started">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.liferay.live.sb.demo.model.impl.StudentModelImpl">
+		<attributes>
+			<id name="studentId" />
+			<basic name="userId" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="name" />
+			<basic name="enrolled" />
+			<basic name="enrollmentDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="yearInSchool" />
+			<basic name="major" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="com.liferay.live.sb.demo.model.impl.StudentGPAModelImpl">
+		<attributes>
+			<id name="studentId" />
+			<basic name="name" />
+			<basic name="gradePoints" />
+			<basic name="year" />
+			<basic name="semester" />
+			<basic name="creditHours" />
+			<basic name="gpa" />
+			<basic name="letterGrade" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="com.liferay.live.sb.demo.model.impl.CourseImpl" name="Course">
+		<table name="SBDemo_Course" />
+		<attributes />
+	</entity>
+	<entity class="com.liferay.live.sb.demo.model.impl.CourseCatalogImpl" name="CourseCatalog">
+		<table name="COURSE_CATALOG" />
+		<attributes />
+	</entity>
+	<entity class="com.liferay.live.sb.demo.model.impl.CourseStudentImpl" name="CourseStudent">
+		<table name="SBDemo_CourseStudent" />
+		<attributes />
+	</entity>
+	<entity class="com.liferay.live.sb.demo.model.impl.InstructorImpl" name="Instructor">
+		<table name="SBDemo_Instructor" />
+		<attributes />
+	</entity>
+	<entity class="com.liferay.live.sb.demo.model.impl.StudentImpl" name="Student">
+		<table name="SBDemo_Student" />
+		<attributes />
+	</entity>
+	<entity class="com.liferay.live.sb.demo.model.impl.StudentGPAImpl" name="StudentGPA">
+		<table name="SBDemo_StudentGPA" />
+		<attributes />
+	</entity>
+</entity-mappings>

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.liferay.live.sb.demo.model.Course">
+		<field name="courseId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="instructorId" type="long" />
+		<field name="courseCatalogId" type="long" />
+		<field name="creditHours" type="int" />
+		<field name="semester" type="int" />
+		<field name="year" type="int" />
+		<field name="name" type="String" />
+		<field name="major" type="String" />
+	</model>
+	<model name="com.liferay.live.sb.demo.model.CourseCatalog">
+		<field name="courseCatalogId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="name" type="String" />
+		<field name="description" type="String" />
+		<field name="major" type="String" />
+		<field name="creditHours" type="int" />
+	</model>
+	<model name="com.liferay.live.sb.demo.model.CourseStudent">
+		<field name="studentId" type="long" />
+		<field name="courseId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="grade" type="double" />
+	</model>
+	<model name="com.liferay.live.sb.demo.model.Instructor">
+		<field name="instructorId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="name" type="String" />
+		<field name="started" type="Date" />
+	</model>
+	<model name="com.liferay.live.sb.demo.model.Student">
+		<field name="studentId" type="long" />
+		<field name="userId" type="long" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="name" type="String" />
+		<field name="enrolled" type="boolean" />
+		<field name="enrollmentDate" type="Date" />
+		<field name="yearInSchool" type="int" />
+		<field name="major" type="String" />
+	</model>
+	<model name="com.liferay.live.sb.demo.model.StudentGPA">
+		<field name="studentId" type="long" />
+		<field name="name" type="String" />
+		<field name="gradePoints" type="double" />
+		<field name="year" type="int" />
+		<field name="semester" type="int" />
+		<field name="creditHours" type="int" />
+		<field name="gpa" type="double" />
+		<field name="letterGrade" type="String" />
+	</model>
+</model-hints>

@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_1_0.dtd">
+
+<service-builder package-path="com.liferay.live.sb.demo">
+	<author>dnebinger</author>
+	<namespace>SBDemo</namespace>
+	<!-- A student is enrolled at the school and will be taking courses. -->
+	<entity name="Student" local-service="true" remote-service="false">
+		<!-- PK fields -->
+		<column name="studentId" type="long" primary="true" id-type="increment"></column>
+		<!-- Audit fields -->
+		<column name="userId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		<!-- Other fields -->
+		<column name="name" type="String"></column>
+		<column name="enrolled" type="boolean"></column>
+		<column name="enrollmentDate" type="Date"></column>
+		<column name="yearInSchool" type="int"></column>
+		<column name="major" type="String"></column>
+		<!-- Order -->
+		<order by="asc">
+			<order-column name="name"></order-column>
+		</order>
+		<!-- Finder methods -->
+		<finder name="YearInSchool" return-type="Collection">
+			<finder-column name="yearInSchool"></finder-column>
+		</finder>
+		<finder name="Major" return-type="Collection">
+			<finder-column name="major"></finder-column>
+		</finder>
+	</entity>
+	<!-- A course is a single class taught in a year/semester by one instructor. -->
+	<entity name="Course" local-service="true" remote-service="false">
+		<!-- PK fields -->
+		<column name="courseId" type="long" primary="true" id-type="increment"></column>
+		<!-- Audit fields -->
+		<column name="userId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		<!-- Other fields -->
+		<!-- 'foreign key' to the instructor that taught the course -->
+		<!-- This is basically a one to many relationship. -->
+		<column name="instructorId" type="long"></column>
+		<!-- 'foreign key' to the course catalog in a separate database that has the course description -->
+		<!-- This is basically a one to many relationship -->
+		<column name="courseCatalogId" type="long"></column>
+		<column name="creditHours" type="int"></column>
+		<column name="semester" type="int"></column>
+		<column name="year" type="int"></column>
+		<column name="name" type="String"></column>
+		<column name="major" type="String"></column>
+		<order by="asc">
+			<order-column name="year"></order-column>
+			<order-column name="semester"></order-column>
+			<order-column name="name"></order-column>
+		</order>
+		<finder name="InstructorId" return-type="Collection">
+			<finder-column name="instructorId"></finder-column>
+		</finder>
+		<finder name="Year" return-type="Collection">
+			<finder-column name="year"></finder-column>
+		</finder>
+		<finder name="YearSemester" return-type="Collection">
+			<finder-column name="year"></finder-column>
+			<finder-column name="semester"></finder-column>
+		</finder>
+		<finder name="CourseCatalogId" return-type="Collection">
+			<finder-column name="courseCatalogId"></finder-column>
+		</finder>
+	</entity>
+	<!-- An instructor is the person that leads the course(s). -->
+	<entity name="Instructor" local-service="true" remote-service="false">
+		<!-- PK fields -->
+		<column name="instructorId" type="long" primary="true" id-type="increment"></column>
+		<!-- Audit fields -->
+		<column name="userId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		<!-- Other fields -->
+		<column name="name" type="String"></column>
+		<column name="started" type="Date"></column>
+	</entity>
+	<!-- This is a many-to-many relationship between the courses and the students. -->
+	<entity name="CourseStudent" local-service="true" remote-service="false">
+		<!-- PK fields -->
+		<column name="studentId" type="long" primary="true"></column>
+		<column name="courseId" type="long" primary="true"></column>
+		<!-- Audit fields -->
+		<column name="userId" type="long"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		<!-- Other fields -->
+		<column name="grade" type="double"></column>
+		<finder name="CourseId" return-type="Collection">
+			<finder-column name="courseId"></finder-column>
+		</finder>
+		<finder name="StudentId" return-type="Collection">
+			<finder-column name="studentId"></finder-column>
+		</finder>
+	</entity>
+	<!-- Example of table that lives in a different database. -->
+	<entity name="CourseCatalog" local-service="true" remote-service="false" data-source="demo2DataSource" table="COURSE_CATALOG" session-factory="demo2SessionFactory">
+		<!-- PK fields -->
+		<column name="courseCatalogId" type="long" primary="true" db-name="CC_ID" id-type="increment"></column>
+		<!-- Audit fields -->
+		<column name="userId" type="long" db-name="U_ID"></column>
+		<column name="createDate" type="Date" db-name="CREATED"></column>
+		<column name="modifiedDate" type="Date" db-name="MODIFIED"></column>
+		<!-- Other fields -->
+		<column name="name" type="String" db-name="C_NAME"></column>
+		<column name="description" type="String" db-name="C_DESC"></column>
+		<column name="major" type="String" db-name="C_MAJOR"></column>
+		<column name="creditHours" type="int" db-name="CRED_HRS"></column>
+		<order by="asc">
+			<order-column name="name"></order-column>
+		</order>
+	</entity>
+	<!-- Example of an entity that should not live in the database -->
+	<entity name="StudentGPA" local-service="true" remote-service="false" data-source="noDataSource">
+		<column name="studentId" type="long" primary="true"></column>
+		<column name="name" type="String"></column>
+		<column name="gradePoints" type="double"></column>
+		<column name="year" type="int"></column>
+		<column name="semester" type="int"></column>
+		<column name="creditHours" type="int"></column>
+		<column name="gpa" type="double"></column>
+		<column name="letterGrade" type="String"></column>
+	</entity>
+</service-builder>
