@@ -38,7 +38,7 @@ public class ClpMessageListener extends BaseMessageListener {
 		String command = message.getString("command");
 		String servletContextName = message.getString("servletContextName");
 
-		if (command.equals("undeploy") &&
+		if ("undeploy".equals(command) &&
 				servletContextName.equals(getServletContextName())) {
 			CourseLocalServiceUtil.clearService();
 

@@ -223,33 +223,33 @@ public class ClpSerializer {
 
 		String oldModelClassName = oldModelClass.getName();
 
-		if (oldModelClassName.equals(
-					"com.liferay.live.sb.demo.model.impl.CourseImpl")) {
+		if ("com.liferay.live.sb.demo.model.impl.CourseImpl".equals
+					(oldModelClassName)) {
 			return translateOutputCourse(oldModel);
 		}
 
-		if (oldModelClassName.equals(
-					"com.liferay.live.sb.demo.model.impl.CourseCatalogImpl")) {
+		if ("com.liferay.live.sb.demo.model.impl.CourseCatalogImpl".equals
+					(oldModelClassName)) {
 			return translateOutputCourseCatalog(oldModel);
 		}
 
-		if (oldModelClassName.equals(
-					"com.liferay.live.sb.demo.model.impl.CourseStudentImpl")) {
+		if ("com.liferay.live.sb.demo.model.impl.CourseStudentImpl".equals
+					(oldModelClassName)) {
 			return translateOutputCourseStudent(oldModel);
 		}
 
-		if (oldModelClassName.equals(
-					"com.liferay.live.sb.demo.model.impl.InstructorImpl")) {
+		if ("com.liferay.live.sb.demo.model.impl.InstructorImpl".equals
+					(oldModelClassName)) {
 			return translateOutputInstructor(oldModel);
 		}
 
-		if (oldModelClassName.equals(
-					"com.liferay.live.sb.demo.model.impl.StudentImpl")) {
+		if ("com.liferay.live.sb.demo.model.impl.StudentImpl".equals
+					(oldModelClassName)) {
 			return translateOutputStudent(oldModel);
 		}
 
-		if (oldModelClassName.equals(
-					"com.liferay.live.sb.demo.model.impl.StudentGPAImpl")) {
+		if ("com.liferay.live.sb.demo.model.impl.StudentGPAImpl".equals
+					(oldModelClassName)) {
 			return translateOutputStudentGPA(oldModel);
 		}
 
@@ -333,31 +333,31 @@ public class ClpSerializer {
 			return new SystemException();
 		}
 
-		if (className.equals("com.liferay.live.sb.demo.NoSuchCourseException")) {
+		if ("com.liferay.live.sb.demo.NoSuchCourseException".equals(className)) {
 			return new com.liferay.live.sb.demo.NoSuchCourseException();
 		}
 
-		if (className.equals(
-					"com.liferay.live.sb.demo.NoSuchCourseCatalogException")) {
+		if ("com.liferay.live.sb.demo.NoSuchCourseCatalogException".equals
+					(className)) {
 			return new com.liferay.live.sb.demo.NoSuchCourseCatalogException();
 		}
 
-		if (className.equals(
-					"com.liferay.live.sb.demo.NoSuchCourseStudentException")) {
+		if ("com.liferay.live.sb.demo.NoSuchCourseStudentException".equals
+					(className)) {
 			return new com.liferay.live.sb.demo.NoSuchCourseStudentException();
 		}
 
-		if (className.equals(
-					"com.liferay.live.sb.demo.NoSuchInstructorException")) {
+		if ("com.liferay.live.sb.demo.NoSuchInstructorException".equals
+					(className)) {
 			return new com.liferay.live.sb.demo.NoSuchInstructorException();
 		}
 
-		if (className.equals("com.liferay.live.sb.demo.NoSuchStudentException")) {
+		if ("com.liferay.live.sb.demo.NoSuchStudentException".equals(className)) {
 			return new com.liferay.live.sb.demo.NoSuchStudentException();
 		}
 
-		if (className.equals(
-					"com.liferay.live.sb.demo.NoSuchStudentGPAException")) {
+		if ("com.liferay.live.sb.demo.NoSuchStudentGPAException".equals
+					(className)) {
 			return new com.liferay.live.sb.demo.NoSuchStudentGPAException();
 		}
 
